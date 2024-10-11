@@ -31,12 +31,9 @@ https://github.com/kadirgulteekin/MoneyManager.git
 Proje kapsamında kullanılan teknolojiler:
 
 * **.NET 8.0**
-* **Ocelot**
-* **IdentityServer4**
 * **RabbitMQ**
 * **Docker**
 * **Entity Framework Core**
-* **PostgreSQL**
 * **SQL Server**
 
 <p>Bu proje, temiz mimari prensiplerine uygun olarak geliştirilmiştir ve modüler bir yapıdadır. Uygulama, performans ve bakım kolaylığı sağlamak amacıyla çeşitli katmanlara ayrılmıştır: Sunum, Uygulama, Alan ve Altyapı katmanları.</p>
