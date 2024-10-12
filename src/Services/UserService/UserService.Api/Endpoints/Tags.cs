@@ -8,6 +8,4 @@ public static class Tags
     public const string Transactions = "transactions";
     public const string Reports = "reports";
 
-
-
 }

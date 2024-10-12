@@ -1,12 +1,12 @@
 using Application;
 using HealthChecks.UI.Client;
 using Infrastructure;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Serilog;
 using System.Reflection;
 using Web.Api;
 using Web.Api.Extensions;
+using Web.Api.OutpuCaching;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +23,17 @@ builder.Services
     .AddInfrastructure(builder.Configuration);
 
 builder.Services.AddEndpoints(Assembly.GetExecutingAssembly());
+
+builder.Services.AddOutputCache(options =>
+{
+    options.AddBasePolicy(b => b.AddPolicy<CustomPolicy>().SetCacheKeyPrefix("custom-"), true);
+});
+
+builder.Services.AddStackExchangeRedisOutputCache(options =>
+{
+    options.Configuration = builder.Configuration.GetConnectionString("Redis")!;
+    options.InstanceName = "cal-connect";
+});
 
 var app = builder.Build();
 
@@ -46,6 +57,7 @@ app.UseExceptionHandler();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+app.UseOutputCache();
 await app.RunAsync();
 
 namespace Web.Api
