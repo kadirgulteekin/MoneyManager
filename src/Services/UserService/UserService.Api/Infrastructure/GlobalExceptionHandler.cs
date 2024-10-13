@@ -15,9 +15,10 @@ internal sealed class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> log
 
         var problemDetails = new ProblemDetails
         {
-            Status = StatusCodes.Status500InternalServerError,
+            Status = httpContext.Response.StatusCode,
             Type = "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1",
-            Title = "Server failure"
+            Title = exception.Message,
+            Instance = httpContext.Request.Path
         };
 
         httpContext.Response.StatusCode = problemDetails.Status.Value;

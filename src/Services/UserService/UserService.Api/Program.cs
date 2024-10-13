@@ -6,6 +6,7 @@ using Serilog;
 using System.Reflection;
 using Web.Api;
 using Web.Api.Extensions;
+using Web.Api.Infrastructure;
 using Web.Api.OutpuCaching;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,7 +24,8 @@ builder.Services
     .AddInfrastructure(builder.Configuration);
 
 builder.Services.AddEndpoints(Assembly.GetExecutingAssembly());
-
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
 builder.Services.AddOutputCache(options =>
 {
     options.AddBasePolicy(b => b.AddPolicy<CustomPolicy>().SetCacheKeyPrefix("custom-"), true);
