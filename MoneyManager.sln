@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "src\Servi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{22A84101-56E4-45DB-84E2-4D7568A3859A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyManagerTests", "test\MoneyManagerTests\MoneyManagerTests.csproj", "{094DD24A-4375-4BF1-8C1F-671E00040CFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyManagerTests", "test\MoneyManagerTests\MoneyManagerTests.csproj", "{094DD24A-4375-4BF1-8C1F-671E00040CFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
